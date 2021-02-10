@@ -1,0 +1,20 @@
+{
+  "name": "BotCheck",
+  "version": "1.0.0",
+  "description": "Checks a discord bot's info using JS",
+  "main": "main.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DwifteJB/BotCheck.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DwifteJB/BotCheck/issues"
+  },
+  "homepage": "https://github.com/DwifteJB/BotCheck#readme"
+}
