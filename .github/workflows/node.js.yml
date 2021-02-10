@@ -16,7 +16,6 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
         node-version: [12.x, 15.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
@@ -32,11 +31,18 @@ jobs:
       run: npm i
     - name: "Install Electron"
       run: npm i electron --save-dev
-    - name: "Build"
+    - name: "Build Linux"
       run: electron-packager . BotCheckNightly --platform=linux --arch=x64
-    - name: "Upload"
+    - name: "Build Windows"
+      run: electron-packager . BotCheckNightly --platform=win32 --arch=x64
+    - name: "Upload Windows"
       uses: actions/upload-artifact@v2
       with:
-          name: BotCheck Nightly ${{ matrix.os }}
-          path: BotCheck*
+          name: BotCheck Nightly Windows x64
+          path: BotCheck/BotCheckNightly-win32-x64
+    - name: "Upload Linux"
+      uses: actions/upload-artifact@v2
+      with:
+        name: BotCheck Nightly Linux x64
+        path: BotCheck/BotCheckNightly-linux-x64
 
