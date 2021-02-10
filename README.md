@@ -6,7 +6,7 @@ Checks a discord bot's token info using JS
 Compile Status:
 
 [![Build Status](https://travis-ci.com/DwifteJB/BotCheck.svg?branch=main)](https://travis-ci.com/DwifteJB/BotCheck)
-![BotCheck](https://github.com/DwifteJB/BotCheck/workflows/BotCheck/badge.svg)
+![Nightly](https://github.com/DwifteJB/BotCheck/workflows/Nightly/badge.svg)
 
 In development.
 
