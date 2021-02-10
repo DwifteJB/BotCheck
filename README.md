@@ -6,9 +6,9 @@ In development. Check out if it's compiling [here](https://www.travis-ci.com/git
 
 ## Checklist
 ### Render Screen 
-~~- Render index.html~~
-~~- Limit Size~~
-~~- Limit Fullscreenability~~
+- ~~Render index.html~~
+- ~~Limit Size~~
+- ~~Limit Fullscreenability~~
 - Remove toolbar? / Possibly custom toolbar.
 
 ### Info Stuff
