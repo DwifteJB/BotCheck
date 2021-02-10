@@ -3,9 +3,12 @@
 Checks a discord bot's token info using JS
 
 ## Current Status:
-[![Build Status](https://travis-ci.com/DwifteJB/BotCheck.svg?branch=main)](https://travis-ci.com/DwifteJB/BotCheck)
+Compile Status:
 
-In development. No current releases.
+[![Build Status](https://travis-ci.com/DwifteJB/BotCheck.svg?branch=main)](https://travis-ci.com/DwifteJB/BotCheck)
+![BotCheck](https://github.com/DwifteJB/BotCheck/workflows/BotCheck/badge.svg)
+
+In development.
 
 ## Checklist
 ### Render Screen 
