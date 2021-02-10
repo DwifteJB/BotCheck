@@ -20,7 +20,7 @@ jobs:
     - name: Setup Node
       uses: actions/setup-node@v1
       with:
-        node-version: 12.x
+        node-version: 8.x
     - name: "Install Wine64"
       run: sudo apt install wine64 -y
     - name: "Install Electron Packager"
@@ -36,9 +36,11 @@ jobs:
     - name: "Upload Windows"
       uses: actions/upload-artifact@v2
       with:
+        name: "BotCheckNightly Windows-x64"
         path: BotCheckNightly-win32-x64
     - name: "Upload Linux"
       uses: actions/upload-artifact@v2
       with:
-        path: BotCheckNightly-Linux-x64
+        name: "BotCheckNightly Linux-x64"
+        path: BotCheckNightly-linux-x64
 
