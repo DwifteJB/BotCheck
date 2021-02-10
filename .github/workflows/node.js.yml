@@ -20,7 +20,7 @@ jobs:
     - name: Setup Node
       uses: actions/setup-node@v1
       with:
-        node-version: 8.x
+        node-version: 10.x 
     - name: "Install Wine64"
       run: sudo apt install wine64 -y
     - name: "Install Electron Packager"
