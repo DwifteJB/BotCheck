@@ -41,10 +41,10 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: BotCheck Nightly Windows x64
-        path: BotCheck/BotCheckNightly-win32-x64
+        path: BotCheckNightly-win32-x64
     - name: "Upload Linux"
       uses: actions/upload-artifact@v2
       with:
         name: BotCheck Nightly Linux x64
-        path: BotCheck/BotCheckNightly-linux-x64
+        path: BotCheckNightly-linux-x64
 
