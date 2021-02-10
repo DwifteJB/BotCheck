@@ -4,7 +4,7 @@
   "description": "Checks a discord bot's info using JS",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"The build has been compiled!\" && exit 1",
+    "test": "echo \"The build has been compiled!\"",
     "electron": "electron ."
     
   },
