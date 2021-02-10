@@ -1,7 +1,4 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
-
-name: "pre-release"
+name: "Development Build"
 
 on: push
 
@@ -12,12 +9,15 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
+
     steps:
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
       - name: Check out Git repository
         uses: actions/checkout@v1
+
+      - name: Install Node.js, NPM and Yarn
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10
 
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
