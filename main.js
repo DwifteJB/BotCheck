@@ -4,7 +4,7 @@ function createWindow() {
     const win = new BrowserWindow({
         width: 500,
         height: 250,
-        icon: "src/icon.png",
+        icon: "src/icon.png", // Currently just a normal discord logo.
         webPreferences: {
             nodeIntegreation: true
         },
