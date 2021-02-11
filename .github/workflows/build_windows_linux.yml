@@ -83,6 +83,7 @@ jobs:
     - name: "Build for Windows"
       run: electron-builder --win
     - name: "Upload Windows Build"
+      if: ${{ always() }}
       uses: actions/upload-artifact@v2
       with:
         name: "BotCheck Nightly Win-x64"
