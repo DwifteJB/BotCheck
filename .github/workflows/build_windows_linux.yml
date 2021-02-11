@@ -38,7 +38,9 @@ jobs:
   MacOS:
 
     runs-on: macos-latest
-
+    continue-on-error: true
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
     - uses: actions/checkout@v2
     - name: Setup Node
