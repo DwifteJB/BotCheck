@@ -18,8 +18,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 10.x 
-    - name: "Install Electron Packager"
-      run: npm install electron-packager -g
+    - name: "Install Electron Builder"
+      run: npm install electron-builder -g
     - name: "Install Dependencies"
       run: npm i
     - name: "Install Electron"
@@ -43,8 +43,8 @@ jobs:
       with:
         node-version: 10.x
 
-    - name: "Install Electron Packager"
-      run: npm install electron-packager -g
+    - name: "Install Electron Builder"
+      run: npm install electron-builder -g
     - name: "Install Dependencies"
       run: npm i
     - name: "Install Electron"
@@ -69,8 +69,8 @@ jobs:
       with:
         node-version: 12.x
 
-    - name: "Install Electron Packager"
-      run: npm install electron-packager -g
+    - name: "Install Electron Builder"
+      run: npm install electron-builder -g
     - name: "Install Dependincies"
       run: npm install
     - name: "Install Electron"
