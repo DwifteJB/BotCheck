@@ -9,6 +9,7 @@ function createWindow() {
             nodeIntegration: true
         },
         resizable: false,
+        title: "BotCheck",
         fullscreenable: false,
         titleBarStyle: "hidden", 
         icon: "src/icon.png" 
