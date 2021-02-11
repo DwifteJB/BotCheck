@@ -24,6 +24,7 @@ jobs:
       run: npm i
     - name: "Install Electron"
       run: npm i electron --save-dev
+    - run: export GH_TOKEN=${{ secrets.GH_TOKEN}}
     - name: "Build Linux"
       run: electron-builder --linux deb
     - name: "Upload Linux"
@@ -75,6 +76,7 @@ jobs:
       run: npm install
     - name: "Install Electron"
       run: npm i --save-dev electron
+    - run: SET GHTOKEN=${{ secrets.GH_TOKEN}}
     - name: "Build for Windows"
       run: electron-builder --win
     - name: "Upload Windows Build"
