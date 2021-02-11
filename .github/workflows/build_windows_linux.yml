@@ -23,7 +23,7 @@ jobs:
         node-version: 10.x 
     - name: "Install Electron Builder"
       run: npm install electron-builder -g
-   - name: "Install Dependencies"
+    - name: "Install Dependencies"
       run: npm i
     - name: "Install Electron"
       run: npm i electron --save-dev
