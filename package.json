@@ -23,14 +23,9 @@
   "dependencies": {
     "custom-electron-titlebar": "^3.2.2-hotfix62",
     "discord.js": "^12.5.1",
-    "electron-reload": "^1.5.0",
-    "iconv": "^3.0.0"
   },
   "devDependencies": {
     "electron": "^8.0.0",
-    "electron-build": "0.0.3",
     "electron-builder": "^22.9.1",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^4.5.0"
   }
 }
