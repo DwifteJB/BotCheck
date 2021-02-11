@@ -5,9 +5,10 @@ Checks a discord bot's token info using JS
 ## Current Status:
 
 
-### Install Nightly builds here:
+### Build Status (Nightly):
+*(You can Download Nightly build by clicking on the badge)*
 
-[![Nightly](https://github.com/DwifteJB/BotCheck/workflows/Nightly/badge.svg)](https://github.com/DwifteJB/BotCheck/actions)
+[![Nightly](https://github.com/DwifteJB/BotCheck/workflows/Nightly/badge.svg)](https://github.com/DwifteJB/BotCheck/actions?query=workflow%3ANightly) [![Nightly-OSX](https://github.com/DwifteJB/BotCheck/workflows/Nightly-OSX/badge.svg)](https://github.com/DwifteJB/BotCheck/actions?query=workflow%3ANightly-OSX)
 
 ## Checklist
 ### Render Screen 
