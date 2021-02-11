@@ -66,4 +66,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: "BotCheckNightly OSX x64"
-        path: BotCheckNightly-OSX-darwin-x64
+        path: BotCheckNightly-darwin-x64
