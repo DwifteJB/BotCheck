@@ -33,7 +33,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: "BotCheckNightly Linux-x64"
-        path: "dist/DwifteJB_1.0.0_amd64.snap"
+        path: "dist/BotCheck_1.0.0_amd64.snap"
 
   MacOS:
 
@@ -46,21 +46,21 @@ jobs:
       with:
         node-version: 10.x
 
-    - name: "Install Electron Packager"
-      run: npm install electron-packager -g
+    - name: "Install Electron Builder"
+      run: npm install electron-builder -g
     - name: "Install Dependencies"
       run: npm i
     - name: "Install Electron"
       run: npm i electron --save-dev
 
     - name: "Build macos"
-      run: electron-packager . BotCheckNightly --platform=darwin --arch=x64
+      run: electron-builder --mac
 
     - name: "Upload OSX"
       uses: actions/upload-artifact@v2
       with:
         name: "BotCheckNightly OSX x64"
-        path: BotCheckNightly-darwin-x64
+        path: "dist/BotCheck Setup 1.0.0.dmg
 
   Windows:
     runs-on: windows-latest
