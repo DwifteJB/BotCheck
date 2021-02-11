@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: true
     env:
-      GH_TOKEN: ${{ secrets.GH_TOKEN}}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
     steps:
@@ -33,7 +33,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: "BotCheckNightly Linux-x64"
-        path: "dist\\BotCheck Setup 1.0.0.deb"
+        path: "dist/DwifteJB_1.0.0_amd64.snap"
 
   MacOS:
 
@@ -66,7 +66,7 @@ jobs:
     runs-on: windows-latest
     continue-on-error: true
     env:
-      GH_TOKEN: ${{ secrets.GH_TOKEN}}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
     - uses: actions/checkout@v2
     - name: Setup Node
@@ -86,4 +86,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: "BotCheck Nightly Win-x64"
-        path: "dist\\BotCheck Setup 1.0.0.exe"
+        path: "dist/BotCheck Setup 1.0.0.exe"
