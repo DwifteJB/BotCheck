@@ -32,7 +32,7 @@ jobs:
     - name: "Upload Linux"
       uses: actions/upload-artifact@v2
       with:
-        name: "BotCheckNightly Linux-x64"
+        name: "BotCheckNightly Debian-x64"
         path: "dist/BotCheck_1.0.0_amd64.snap"
 
   MacOS:
@@ -62,7 +62,7 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v2
       with:
-        name: "BotCheckNightly OSX x64"
+        name: "BotCheck Nightly OSX-x64"
         path: "dist/BotCheck-1.0.0.dmg"
 
   Windows:
