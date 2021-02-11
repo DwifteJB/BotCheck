@@ -1,0 +1,46 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: "Nightly"
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10.x 
+    - name: "Install Wine64"
+      run: sudo apt install wine64 -y
+    - name: "Install Electron Packager"
+      run: npm install electron-packager -g
+    - name: "Install Dependencies"
+      run: npm i
+    - name: "Install Electron"
+      run: npm i electron --save-dev
+    - name: "Build Linux"
+      run: electron-packager . BotCheckNightly --platform=linux --arch=x64
+    - name: "Build Windows"
+      run: electron-packager . BotCheckNightly --platform=win32 --arch=x64
+    - name: "Upload Windows"
+      uses: actions/upload-artifact@v2
+      with:
+        name: "BotCheckNightly Windows-x64"
+        path: BotCheckNightly-win32-x64
+    - name: "Upload Linux"
+      uses: actions/upload-artifact@v2
+      with:
+        name: "BotCheckNightly Linux-x64"
+        path: BotCheckNightly-linux-x64
+

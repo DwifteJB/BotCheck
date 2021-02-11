@@ -4,15 +4,16 @@
   "description": "Checks a discord bot's info using JS",
   "main": "main.js",
   "scripts": {
-    "test": "electron ."
+    "test": "echo \"The build has been compiled!\"",
+    "electron": "electron ."
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DwifteJB/BotCheck.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Dwifte",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/DwifteJB/BotCheck/issues"
   },
