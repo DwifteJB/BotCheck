@@ -43,8 +43,8 @@ jobs:
       with:
         node-version: 10.x
 
-    - name: "Install Electron Builder"
-      run: npm install electron-builder -g
+    - name: "Install Electron Packager"
+      run: npm install electron-packager -g
     - name: "Install Dependencies"
       run: npm i
     - name: "Install Electron"
