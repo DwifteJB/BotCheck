@@ -30,7 +30,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: "BotCheckNightly Linux-x64"
-        path: "dist\BotCheck Setup 1.0.0.deb"
+        path: "dist\\BotCheck Setup 1.0.0.deb"
 
   MacOS:
 
@@ -70,15 +70,15 @@ jobs:
         node-version: 12.x
 
     - name: "Install Electron Packager"
-      runs: npm install electron-packager -g
+      run: npm install electron-packager -g
     - name: "Install Dependincies"
-      runs: npm install
+      run: npm install
     - name: "Install Electron"
-      runs: npm i --save-dev electron
+      run: npm i --save-dev electron
     - name: "Build for Windows"
-      runs: electron-builder --win
+      run: electron-builder --win
     - name: "Upload Windows Build"
       uses: actions/upload-artifact@v2
       with:
         name: "BotCheck Nightly Win-x64"
-        path: "dist\BotCheck Setup 1.0.0.exe"
+        path: "dist\\BotCheck Setup 1.0.0.exe"
