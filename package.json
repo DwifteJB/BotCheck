@@ -2,7 +2,7 @@
   "name": "BotCheck",
   "version": "1.0.0",
   "description": "Checks a discord bot's info using JS",
-  { "name" : "DwifteJB", "email" : "dwifte@outlook.com", "url" : "https://dwifte.me" },
+  "name" : "DwifteJB", "email" : "dwifte@outlook.com", "url" : "https://dwifte.me",
   "main": "main.js",
   "scripts": {
     "test": "echo \"The build has been compiled!\"",
