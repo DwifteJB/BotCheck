@@ -1,25 +1,24 @@
-const { app, BrowserWindow, dialog } = require("electron");
-const customTitlebar = require('custom-electron-titlebar');
+const electron = require("electron");
+const app = electron.app;
+const path = require("path")
 function createWindow() {
-    const win = new BrowserWindow({
+    const win = new electron.BrowserWindow({
         width: 500,
         height: 250,
-        icon: "src/icon.png", // Currently just a normal discord logo.
+        frame: false,
         webPreferences: {
-            nodeIntegreation: true
+            nodeIntegration: true
         },
-        resizable: false
+        titleBarStyle: "hidden", // add this line
+        icon: "src/icon.png" // Currently just a normal discord logo.
     });
     win.loadFile("index.html");
     win.setResizable(false);
     win.setFullScreenable(false);
     win.setAlwaysOnTop(true);
-    win.setTitle("Bot Check - DwifteJB")
     win.setMenuBarVisibility(false)
 
-    new customTitlebar.Titlebar({
-        backgroundColor: customTitlebar.Color.fromHex('#343A40')
-    });
+
 }
 app.whenReady().then(createWindow)
 
@@ -33,4 +32,5 @@ app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {
         createWindow()
     }
+
 })

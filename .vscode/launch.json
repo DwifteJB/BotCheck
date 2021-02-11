@@ -4,7 +4,7 @@
             "type": "node-terminal",
             "name": "Run Script: test",
             "request": "launch",
-            "command": "npm ",
+            "command": "npm run start",
             "cwd": "${workspaceFolder}"
         }
     ]
