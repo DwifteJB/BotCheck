@@ -1,6 +1,3 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
 name: "Nightly"
 
 on:
@@ -10,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  buildforx64:
 
     runs-on: ubuntu-latest
 
@@ -44,3 +41,29 @@ jobs:
         name: "BotCheckNightly Linux-x64"
         path: BotCheckNightly-linux-x64
 
+  buildforMacOS:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10.x
+
+    - name: "Install Electron Packager"
+      run: npm install electron-packager -g
+    - name: "Install Dependencies"
+      run: npm i
+    - name: "Install Electron"
+      run: npm i electron --save-dev
+
+    - name: "Build macos"
+      run: electron-packager . BotCheckNightly --platform=darwin --arch=x64
+
+    - name: "Upload OSX"
+      uses: actions/upload-artifact@v2
+      with:
+        name: "BotCheckNightly OSX x64"
+        path: BotCheckNightly-OSX-darwin-x64
