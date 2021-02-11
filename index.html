@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>BotCheck</title>
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
-    <link href="src/css/bootstrap.min.css" rel="stylesheet">
-    <script href="src/js/bootstrap.min.js"></script>
+    <link href="src/css/main.css" rel="stylesheet">
   <script>
     const path = require('path');
     const url = require('url');
+    const { Menu, MenuItem } = require("electron")
 
     const customTitlebar = require('custom-electron-titlebar');
 
@@ -19,11 +19,11 @@
         maximizable: false,
       });
       MyTitleBar.updateTitle(' ');
-    })
+      console.log("abc")
+    });
   </script>
   </head>
-<body style=bgdark>
+<body class="bgdark">
 
 </body>
 </html>
-

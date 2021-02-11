@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  buildforx64:
+  Ubuntu:
 
     runs-on: ubuntu-latest
 
@@ -18,8 +18,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 10.x 
-    - name: "Install Wine64"
-      run: sudo apt install wine64 -y
     - name: "Install Electron Packager"
       run: npm install electron-packager -g
     - name: "Install Dependencies"
@@ -27,21 +25,14 @@ jobs:
     - name: "Install Electron"
       run: npm i electron --save-dev
     - name: "Build Linux"
-      run: electron-packager . BotCheckNightly --platform=linux --arch=x64
-    - name: "Build Windows"
-      run: electron-packager . BotCheckNightly --platform=win32 --arch=x64
-    - name: "Upload Windows"
-      uses: actions/upload-artifact@v2
-      with:
-        name: "BotCheckNightly Windows-x64"
-        path: BotCheckNightly-win32-x64
+      run: electron-packager --linux --deb
     - name: "Upload Linux"
       uses: actions/upload-artifact@v2
       with:
         name: "BotCheckNightly Linux-x64"
-        path: BotCheckNightly-linux-x64
+        path: "dist\BotCheck Setup 1.0.0.deb"
 
-  buildforMacOS:
+  MacOS:
 
     runs-on: macos-latest
 
@@ -67,3 +58,27 @@ jobs:
       with:
         name: "BotCheckNightly OSX x64"
         path: BotCheckNightly-OSX-darwin-x64
+
+  Windows:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+
+    - name: "Install Electron Packager"
+      runs: npm install electron-packager -g
+    - name: "Install Dependincies"
+      runs: npm install
+    - name: "Install Electron"
+      runs: npm i --save-dev electron
+    - name: "Build for Windows"
+      runs: electron-builder --win
+    - name: "Upload Windows Build"
+      uses: actions/upload-artifact@v2
+      with:
+        name: "BotCheck Nightly Win-x64"
+        path: "dist\BotCheck Setup 1.0.0.exe"
