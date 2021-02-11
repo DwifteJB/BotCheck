@@ -31,5 +31,5 @@ jobs:
     - name: "Upload OSX"
       uses: actions/upload-artifact@v2
       with:
-        name: "ScreenRecorderJSNightly OSX-x64"
+        name: "BotCheckNightly OSX-x64"
         path: BotCheckNightly-OSX-darwin-x64
