@@ -1,45 +1,27 @@
-const { Menu } = require("electron");
-const { app, BrowserWindow } = require("electron");
-const path = require("path")
+const { Menu, app, BrowserWindow } = require("electron");
+const fs = require("fs")
 function createWindow() {
     const win = new BrowserWindow({
-        width: 500,
-        height: 250,
+        width: 750,
+        height: 525,
         frame: false,
         webPreferences: {
             nodeIntegration: true
         },
         resizable: false,
         fullscreenable: false,
-        titleBarStyle: "hidden", // add this line
-        icon: "src/icon.png" // Currently just a normal discord logo.
+        titleBarStyle: "hidden", 
+        icon: "src/icon.png" 
     });
     win.loadFile("index.html");
     win.setAlwaysOnTop(true);
+    win.webContents.openDevTools()
     win.setMenuBarVisibility(false)
 }
 app.whenReady().then(createWindow)
 app.whenReady().then(() => {
-    console.log("oo")
-
-    const isMac = process.platform === 'darwin'
     const template = [
-        // { role: 'appMenu' }
-        ...(isMac ? [{
-          label: app.name,
-          submenu: [
-            { role: 'about' },
-            { type: 'separator' },
-            { role: 'services' },
-            { type: 'separator' },
-            { role: 'hide' },
-            { role: 'hideothers' },
-            { role: 'unhide' },
-            { type: 'separator' },
-            { role: 'quit' }
-          ]
-        }] : []),
-        // { role: 'fileMenu' }
+
         {
           label: 'File',
           submenu: [
@@ -83,7 +65,12 @@ app.whenReady().then(() => {
       Menu.setApplicationMenu(menu)
 })
 app.on("window-all-closed", () => {
-    if (process.platform != "darwin") {
+    try {
+      fs.unlinkSync("./commands.json")
+    } catch {
+      //
+    }
+    if (process.platform != "darwin") { // mac sux
         app.quit()
     }
 })
