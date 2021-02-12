@@ -70,7 +70,7 @@ app.on("window-all-closed", () => {
     } catch {
       //
     }
-    if (process.platform != "darwin") { // mac sux
+    if (process.platform != "darwin") {
         app.quit()
     }
 })
