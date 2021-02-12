@@ -24,7 +24,7 @@ const template = [
         label: "Get Themes Here",
         click: async () => {
           const { shell } = require('electron')
-          await shell.openExternal('https://dwifte.me')
+          await shell.openExternal('https://github.com/DwifteJB/BotCheck/tree/plugins')
         }
       }
     ]
