@@ -1,7 +1,6 @@
 const { Menu, app, BrowserWindow, shell, Notification, } = require("electron");
 const fs = require("fs");
 const path = require("path");
-const iconPath = path.resolve(__dirname, 'src','icon.png');
 const template = [
 
   {
