@@ -6,6 +6,6 @@ module.exports = {
   author: "Dwifte",
   async execute() {
     // adds new plugin text on screen
-     $(".center").prepend("<span class=header>Plugins Support is enabled!</span>")
+    $(".center").prepend("<span class=header>Plugins Support is enabled!</span>")
   },
 }
