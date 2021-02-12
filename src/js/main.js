@@ -12,7 +12,6 @@ dataPath = path.join(dataPath, "BotCheck") + "/";
 let PluginPath = path.join(dataPath, "plugins")
 if (!fs.existsSync(dataPath)) fs.mkdirSync(dataPath);
 if (!fs.existsSync(PluginPath)) fs.mkdirSync(PluginPath);
-if (!fs.existsSync(ThemePath)) fs.mkdirSync(ThemePath);
 fs.writeFileSync("./config.json", {"PluginPath": PluginPath})
 
 const customTitlebar = require('custom-electron-titlebar');
