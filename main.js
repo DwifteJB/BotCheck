@@ -1,5 +1,62 @@
-const { Menu, app, BrowserWindow } = require("electron");
-const fs = require("fs")
+const { Menu, app, BrowserWindow, shell, Notification, } = require("electron");
+const fs = require("fs");
+const path = require("path");
+const iconPath = path.resolve(__dirname, 'src','icon.png');
+const template = [
+
+  {
+    label: 'Plugins',
+    submenu: [
+      
+      {
+          label: 'Open Plugins folder',
+          
+          click: async () => {
+            let dataPath;
+            if (process.platform === "win32") dataPath = process.env.APPDATA;
+            else if (process.platform === "darwin") dataPath = path.join(process.env.HOME, "Library", "Preferences");
+            else dataPath = process.env.XDG_CONFIG_HOME ? process.env.XDG_CONFIG_HOME : path.join(process.env.HOME, ".config");
+            dataPath = path.join(dataPath, "BotCheck") + "/";
+            shell.openItem(path.join(dataPath, "plugins"))
+          }
+      },
+      {
+        label: "Get Themes Here",
+        click: async () => {
+          const { shell } = require('electron')
+          await shell.openExternal('https://dwifte.me')
+        }
+      }
+    ]
+  },
+  {
+    label: 'Credits',
+    submenu: [
+      {
+        label: 'DwifteJB - Creator',
+        click: async () => {
+          const { shell } = require('electron')
+          await shell.openExternal('https://dwifte.me')
+        }
+      },
+      {
+          label: 'CrafterPika - Helper',
+          click: async () => {
+            const { shell } = require('electron')
+            await shell.openExternal('https://crafterpika.tech')
+          }
+        },
+        {
+          label: 'Github',
+          click: async () => {
+            const { shell } = require('electron')
+            await shell.openExternal('https://github.com/DwifteJB/BotCheck')
+          }
+        }
+    ]
+  }
+]
+
 function createWindow() {
     const win = new BrowserWindow({
         width: 750,
@@ -21,56 +78,35 @@ function createWindow() {
 }
 app.whenReady().then(createWindow)
 app.whenReady().then(() => {
-    const template = [
-
-        {
-          label: 'File',
-          submenu: [
-            {
-                label: 'Save as JSON',
-                click: async () => {
-                  // ETA S0N
-                }
-            }
-          ]
-        },
-        {
-          label: 'Credits',
-          submenu: [
-            {
-              label: 'DwifteJB - Creator',
-              click: async () => {
-                const { shell } = require('electron')
-                await shell.openExternal('https://dwifte.me')
-              }
-            },
-            {
-                label: 'CrafterPika - Helper',
-                click: async () => {
-                  const { shell } = require('electron')
-                  await shell.openExternal('https://crafterpika.tech')
-                }
-              },
-              {
-                label: 'Github',
-                click: async () => {
-                  const { shell } = require('electron')
-                  await shell.openExternal('https://github.com/DwifteJB/BotCheck')
-                }
-              }
-          ]
-        }
-      ]
-
-      const menu = Menu.buildFromTemplate(template)
-      Menu.setApplicationMenu(menu)
+    let dataPath;
+    if (process.platform === "win32") dataPath = process.env.APPDATA;
+    else if (process.platform === "darwin") dataPath = path.join(process.env.HOME, "Library", "Preferences");
+    else dataPath = process.env.XDG_CONFIG_HOME ? process.env.XDG_CONFIG_HOME : path.join(process.env.HOME, ".config");
+    dataPath = path.join(dataPath, "BotCheck") + "/";
+    const PluginPath = path.join(dataPath, "plugins")
+    let contextMenu = Menu.buildFromTemplate(template);
+      const plugins = fs.readdirSync(PluginPath).filter(file => file.endsWith('.plugin.js'));
+      for (const file of plugins) {
+        const loaded = require(`${PluginPath}/${file}`);
+        template[0].submenu.splice(1, 0, {label: loaded.name, click: async () => {
+          const notification = {
+            title: "BotCheck Plugin Inspect",
+            body: `Plugin info for ${loaded.name} by ${loaded.author}\n${loaded.description}`
+          }
+          new Notification(notification).show()
+        }});
+        render();
+      }
+      function render() {
+        contextMenu = Menu.buildFromTemplate(template);
+        Menu.setApplicationMenu(contextMenu)
+      }
+      
 })
 app.on("window-all-closed", () => {
     try {
       fs.unlinkSync("./commands.json")
-    } catch {
-      //
-    }
+    } catch { }
     if (process.platform != "darwin") {
         app.quit()
     }

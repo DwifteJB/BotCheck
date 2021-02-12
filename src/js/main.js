@@ -13,6 +13,7 @@ let ThemePath = path.join(dataPath, "themes")
 if (!fs.existsSync(dataPath)) fs.mkdirSync(dataPath);
 if (!fs.existsSync(PluginPath)) fs.mkdirSync(PluginPath);
 if (!fs.existsSync(ThemePath)) fs.mkdirSync(ThemePath);
+fs.writeFileSync("./config.json", {"PluginPath": PluginPath})
 
 const customTitlebar = require('custom-electron-titlebar');
 window.addEventListener('DOMContentLoaded', () => {
@@ -24,7 +25,6 @@ window.addEventListener('DOMContentLoaded', () => {
   MyTitleBar.updateTitle(' ');
   // Load Plugins //
 (async () => {
-    console.log(PluginPath)
     await switchToTable()
     const pluginFiles = fs.readdirSync(PluginPath).filter(file => file.endsWith('.plugin.js'));
     for (const file of pluginFiles) {
@@ -37,6 +37,7 @@ window.addEventListener('DOMContentLoaded', () => {
         console.log(err)
       }
     }
+
     
     
   })();
@@ -68,7 +69,29 @@ function switchToTable() {
         ${content}
       </tbody>`
   }
-
+  // function switchToPlugins() {
+  //   let content = "";
+  //   if (!fs.existsSync("./plugins.json")) {
+  //     content = "";
+  //   } else {
+  //     let table = JSON.parse(fs.readFileSync("./plugins.json"))
+  //     for (index in table) {
+  //       content = content + `\n${table[index]}`
+  //     }
+  //   }
+  //   document.getElementById("tabs").innerHTML = `<span class="header">Servers: </span><br><br><table class="table table-dark table-striped">
+  //     <thead>
+  //       <tr>
+  //         <th scope="col">ID</th>
+  //         <th scope="col">Guild Name</th>
+  //         <th scope="col">Member amount</th>
+  //         <th scope="col">Image</th>
+  //       </tr>
+  //     </thead>
+  //     <tbody id="table-guilds">
+  //       ${content}
+  //     </tbody>`
+  // }
 async function getFromToken() {
   try {
     document.getElementById("table-guilds").innerHTML = ""; // if active
