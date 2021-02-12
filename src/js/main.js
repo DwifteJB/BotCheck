@@ -14,11 +14,16 @@ window.addEventListener('DOMContentLoaded', () => {
   MyTitleBar.updateTitle(' ');
   // Load Plugins //
 (async () => {
+    console.log(__dirname)
+    if (!fs.existsSync(`${__dirname}/../../plugins`)) {
+      fs.mkdirSync(`${__dirname}/../../plugins`);
+    }
+    const path = require("path")
     await switchToTable()
-    const pluginFiles = fs.readdirSync('./src/plugins/').filter(file => file.endsWith('.plugin.js'));
+    const pluginFiles = fs.readdirSync(__dirname + '/../../plugins').filter(file => file.endsWith('.plugin.js'));
     for (const file of pluginFiles) {
       try {
-        const plugin = require(`./src/plugins/${file}`);
+        const plugin = require(__dirname + `/../../plugins/${file}`);
         // add confirm box so the user can choose to load the plugin? //
         console.log(`Loading ${plugin.name}\nDescription: ${plugin.description}\nAuthor: ${plugin.author}`);
         await plugin.execute();
