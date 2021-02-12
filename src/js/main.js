@@ -2,9 +2,19 @@ const fs = require("fs")
 window.$ = window.jQuery = require('jquery');
 const path = require('path');
 const url = require('url');
+let dataPath = "";
+global.config = "";
+if (process.platform === "win32") dataPath = process.env.APPDATA;
+else if (process.platform === "darwin") dataPath = path.join(process.env.HOME, "Library", "Preferences");
+else dataPath = process.env.XDG_CONFIG_HOME ? process.env.XDG_CONFIG_HOME : path.join(process.env.HOME, ".config");
+dataPath = path.join(dataPath, "BotCheck") + "/";
+let PluginPath = path.join(dataPath, "plugins")
+let ThemePath = path.join(dataPath, "themes")
+if (!fs.existsSync(dataPath)) fs.mkdirSync(dataPath);
+if (!fs.existsSync(PluginPath)) fs.mkdirSync(PluginPath);
+if (!fs.existsSync(ThemePath)) fs.mkdirSync(ThemePath);
 
 const customTitlebar = require('custom-electron-titlebar');
-
 window.addEventListener('DOMContentLoaded', () => {
   let MyTitleBar = new customTitlebar.Titlebar({
     backgroundColor: customTitlebar.Color.fromHex('#343A40'),
@@ -14,18 +24,14 @@ window.addEventListener('DOMContentLoaded', () => {
   MyTitleBar.updateTitle(' ');
   // Load Plugins //
 (async () => {
-    console.log(__dirname)
-    if (!fs.existsSync(`${__dirname}/../../plugins`)) {
-      fs.mkdirSync(`${__dirname}/../../plugins`);
-    }
-    const path = require("path")
+    console.log(PluginPath)
     await switchToTable()
-    const pluginFiles = fs.readdirSync(__dirname + '/../../plugins').filter(file => file.endsWith('.plugin.js'));
+    const pluginFiles = fs.readdirSync(PluginPath).filter(file => file.endsWith('.plugin.js'));
     for (const file of pluginFiles) {
       try {
-        const plugin = require(__dirname + `/../../plugins/${file}`);
+        const plugin = require(`${PluginPath}/${file}`);
         // add confirm box so the user can choose to load the plugin? //
-        console.log(`Loading ${plugin.name}\nDescription: ${plugin.description}\nAuthor: ${plugin.author}`);
+        console.log(`Loading plugin: ${plugin.name}\nDescription: ${plugin.description}\nAuthor: ${plugin.author}`);
         await plugin.execute();
       } catch(err) {
         console.log(err)
