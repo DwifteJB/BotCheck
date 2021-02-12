@@ -72,8 +72,8 @@ function createWindow() {
         icon: "src/icon.png" 
     });
     win.loadFile("index.html");
-    win.setAlwaysOnTop(true);
-    win.webContents.openDevTools()
+    // win.setAlwaysOnTop(true);
+    // win.webContents.openDevTools()
     win.setMenuBarVisibility(false)
 }
 app.whenReady().then(createWindow)
