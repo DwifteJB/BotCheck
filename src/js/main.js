@@ -4,7 +4,7 @@ const path = require('path');
 const url = require('url');
 
 // RICH PRESENCE //
-const presence = require('discord-rich-presence')('810181988060758046');
+const presence = require('discord-rich-presence')('');
 presence.updatePresence({
   state: 'Checking bots',
   details: 'Bot: N/A',
@@ -78,43 +78,21 @@ function switchToTable() {
       </thead>
       <tbody id="table-guilds">
         ${content}
-      </tbody>`
+      </tbody>
+      </table>`
   }
-  // function switchToPlugins() {
-  //   let content = "";
-  //   if (!fs.existsSync("./plugins.json")) {
-  //     content = "";
-  //   } else {
-  //     let table = JSON.parse(fs.readFileSync("./plugins.json"))
-  //     for (index in table) {
-  //       content = content + `\n${table[index]}`
-  //     }
-  //   }
-  //   document.getElementById("tabs").innerHTML = `<span class="header">Servers: </span><br><br><table class="table table-dark table-striped">
-  //     <thead>
-  //       <tr>
-  //         <th scope="col">ID</th>
-  //         <th scope="col">Guild Name</th>
-  //         <th scope="col">Member amount</th>
-  //         <th scope="col">Image</th>
-  //       </tr>
-  //     </thead>
-  //     <tbody id="table-guilds">
-  //       ${content}
-  //     </tbody>`
-  // }
-async function getFromToken() {
-  try {
-    document.getElementById("table-guilds").innerHTML = ""; // if active
-  } catch (err) {
-    console.error("table not active.")
-  }
-  document.getElementById("error").innerHTML = "";
-  var token = document.getElementById("tokenform").elements[0].value.trim();
-  if (token.length == 0) {
-    document.getElementById("error").innerHTML = `<div id=error-message class="alert alert-danger" role="alert">ERROR [IDIOT]: YOU DIDN'T PROVIDE A TOKEN.</div>`;
+  async function getFromToken() {
+    try {
+      document.getElementById("table-guilds").innerHTML = ""; // if active
+    } catch (err) {
+      console.error("table not active.")
+    }
+    document.getElementById("error").innerHTML = "";
+    var token = document.getElementById("tokenform").elements[0].value.trim();
+    if (token.length == 0) {
+      document.getElementById("error").innerHTML = `<div id=error-message class="alert alert-danger" role="alert">ERROR [IDIOT]: YOU DIDN'T PROVIDE A TOKEN.</div>`;
 
-  }
+    }
 
 
   // login shit here ;)
@@ -138,7 +116,6 @@ async function getFromToken() {
       instance: true,
     });
     if (document.getElementById("table-guilds")) {
-      // use old method too.
       for(const guild of client.guilds.cache) {
         await guild[1].fetch();
         $("#table-guilds").append(`<tr><th scope"row">${guild[0]}</th><td>${guild[1].name}</td><td>${guild[1].members.cache.size}</td><td><img src="${guild[1].iconURL()}" width=15px height=15px alt="serv"></td></tr>`);
