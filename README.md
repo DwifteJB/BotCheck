@@ -15,4 +15,4 @@ Checks a discord bot's token info using JS
 ![Screenshot](./screenshots/screen1.png)
 
 Plugin support is currently in early stages tho there is currently already some stuff possible :), such as theming (as seen in the screenshot)<br>
-All the plugins are avivable at [here](https://github.com/DwifteJB/BotCheck/tree/plugins)
+All the plugins are available at [here](https://github.com/DwifteJB/BotCheck/tree/plugins)

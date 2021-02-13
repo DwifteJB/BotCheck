@@ -1,7 +1,6 @@
 const { Menu, app, BrowserWindow, shell, Notification, } = require("electron");
 const fs = require("fs");
 const path = require("path");
-const iconPath = path.resolve(__dirname, 'src','icon.png');
 const template = [
 
   {
@@ -24,7 +23,7 @@ const template = [
         label: "Get Themes Here",
         click: async () => {
           const { shell } = require('electron')
-          await shell.openExternal('https://dwifte.me')
+          await shell.openExternal('https://github.com/DwifteJB/BotCheck/tree/plugins')
         }
       }
     ]
@@ -72,8 +71,8 @@ function createWindow() {
         icon: "src/icon.png" 
     });
     win.loadFile("index.html");
-    win.setAlwaysOnTop(true);
-    win.webContents.openDevTools()
+    // win.setAlwaysOnTop(true);
+    // win.webContents.openDevTools()
     win.setMenuBarVisibility(false)
 }
 app.whenReady().then(createWindow)
