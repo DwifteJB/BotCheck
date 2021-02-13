@@ -23,6 +23,7 @@
   "homepage": "https://github.com/DwifteJB/BotCheck#readme",
   "dependencies": {
     "custom-electron-titlebar": "^3.2.2-hotfix62",
+    "discord-rich-presence": "0.0.8",
     "discord.js": "^12.5.1",
     "jquery": "^3.5.1"
   },

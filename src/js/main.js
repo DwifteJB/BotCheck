@@ -3,6 +3,17 @@ window.$ = window.jQuery = require('jquery');
 const path = require('path');
 const url = require('url');
 
+// RICH PRESENCE //
+const presence = require('discord-rich-presence')('810181988060758046');
+presence.updatePresence({
+  state: 'Checking bots',
+  details: 'Bot: N/A',
+  startTimestamp: Date.now(),
+  endTimestamp: Date.now() + 1337,
+  largeImageKey: 'icon',
+  instance: true,
+});
+//
 let dataPath = "";
 global.config = "";
 if (process.platform === "win32") dataPath = process.env.APPDATA;
@@ -10,10 +21,10 @@ else if (process.platform === "darwin") dataPath = path.join(process.env.HOME, "
 else dataPath = process.env.XDG_CONFIG_HOME ? process.env.XDG_CONFIG_HOME : path.join(process.env.HOME, ".config");
 dataPath = path.join(dataPath, "BotCheck") + "/";
 let PluginPath = path.join(dataPath, "plugins")
+let ThemePath = path.join
 if (!fs.existsSync(dataPath)) fs.mkdirSync(dataPath);
 if (!fs.existsSync(PluginPath)) fs.mkdirSync(PluginPath);
 if (!fs.existsSync(ThemePath)) fs.mkdirSync(ThemePath);
-fs.writeFileSync("./config.json", {"PluginPath": PluginPath})
 
 const customTitlebar = require('custom-electron-titlebar');
 window.addEventListener('DOMContentLoaded', () => {
@@ -118,6 +129,14 @@ async function getFromToken() {
   client.once('ready', async () => {
     let table = [];
     console.log("Logged into " + client.user.username);
+    presence.updatePresence({
+      state: 'Checking bots',
+      details: 'Bot: ' + client.user.username,
+      startTimestamp: Date.now(),
+      endTimestamp: Date.now() + 1337,
+      largeImageKey: 'icon',
+      instance: true,
+    });
     if (document.getElementById("table-guilds")) {
       // use old method too.
       for(const guild of client.guilds.cache) {

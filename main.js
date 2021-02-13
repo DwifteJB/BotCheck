@@ -85,6 +85,19 @@ app.whenReady().then(() => {
     dataPath = path.join(dataPath, "BotCheck") + "/";
     const PluginPath = path.join(dataPath, "plugins")
     let contextMenu = Menu.buildFromTemplate(template);
+
+    // Install Themer //
+      if (!fs.existsSync(PluginPath + "/themeinjector.plugin.js")) {
+        (async () => {
+          const res = await fetch("https://raw.githubusercontent.com/DwifteJB/BotCheck/plugins/plugins/themeinjector.plugin.js");
+          const fileStream = fs.createWriteStream(PluginPath + "/themeinjector.plugin.js");
+          await new Promise((resolve, reject) => {
+              res.body.pipe(fileStream);
+              res.body.on("error", reject);
+              fileStream.on("finish", resolve);
+            });
+        });
+      }
       const plugins = fs.readdirSync(PluginPath).filter(file => file.endsWith('.plugin.js'));
       for (const file of plugins) {
         const loaded = require(`${PluginPath}/${file}`);
