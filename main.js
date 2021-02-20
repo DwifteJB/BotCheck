@@ -87,7 +87,7 @@ const template = [
           label: 'CrafterPika - Helper',
           click: async () => {
             const { shell } = require('electron')
-            await shell.openExternal('https://crafterpika.tech')
+            await shell.openExternal('https://crafterpika.ml')
           }
         },
         {
