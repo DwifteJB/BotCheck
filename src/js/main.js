@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', () => {
   MyTitleBar.updateTitle(' ');
   // Load Plugins //
 (async () => {
-    await switchToTable()
+    // await switchToTable()
     const pluginFiles = fs.readdirSync(PluginPath).filter(file => file.endsWith('.plugin.js'));
     for (const file of pluginFiles) {
       try {
