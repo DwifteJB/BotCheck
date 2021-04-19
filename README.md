@@ -1,5 +1,7 @@
 # BotCheck
 ![MacStadium](https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png)
+<br>
+<br>
 Checks a discord bot's token info using JS
 
 ## Current Status:
