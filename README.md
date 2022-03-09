@@ -8,9 +8,9 @@ Checks a discord bot's token info using JS
 
 
 ### Build Status (Nightly):
-*(You can Download Nightly build by clicking on the badge)*
+*(You can download the latest nightly build by clicking the badge)*
 
-[![Nightly](https://github.com/DwifteJB/BotCheck/workflows/Nightly/badge.svg)](https://github.com/DwifteJB/BotCheck/actions?query=workflow%3ANightly)
+[![Nightly](https://github.com/DwifteJB/BotCheck/workflows/Nightly/badge.svg)](https://nightly.link/DwifteJB/BotCheck/workflows/build_windows_linux/main)
 
 ## Plugin Support
 
